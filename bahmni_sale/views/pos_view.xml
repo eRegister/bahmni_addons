@@ -7,7 +7,7 @@
 		<field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
 		<field name="arch" type="xml">
 			<xpath expr="//field[@name='fiscal_position_id']" position="after">
-				<field name="shop_id"/>
+				<field name="shop_id" string="Dispensary"/>
 			</xpath>
 		</field>
 	</record>
@@ -20,7 +20,7 @@
 		<field name="inherit_id" ref="point_of_sale.view_pos_config_form"/>
 		<field name="arch" type="xml">
 			<xpath expr="//field[@name='active']" position="after">
-				<field name="shop_id"/>
+				<field name="shop_id" string="Dispensary"/>
 			</xpath>
 		</field>
 	</record>

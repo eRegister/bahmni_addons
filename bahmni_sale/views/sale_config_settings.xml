@@ -7,7 +7,7 @@
 		<field name="inherit_id" ref="sale.view_sales_config"/>
 		<field name="arch" type="xml">
 			<xpath expr="//group[@name='quotations_sales']" position="inside">
-				<label string="Sales Features"/>
+				<label string="Dispensing Features"/>
                 <div name="bahmni_sale_feature">
                     <field name="group_final_so_charge" class="oe_inline" />
                     <label for="group_final_so_charge"/>
@@ -37,7 +37,7 @@
                     <field name="sale_price_markup" class="oe_inline" />
                     <label for="sale_price_markup"/>
                 </div>
-                <label string="Customer Address"/>
+                <label string="Client Address"/>
                 <div name="auto_create_customer_address_levels_feature">
                     <field name="auto_create_customer_address_levels" class="oe_inline" />
                     <label for="auto_create_customer_address_levels"/>

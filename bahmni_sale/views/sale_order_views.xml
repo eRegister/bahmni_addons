@@ -7,17 +7,17 @@
 		<field name="inherit_id" ref="sale.view_order_form"/>
 		<field name="arch" type="xml">
 			<xpath expr="//field[@name='partner_shipping_id']" position="after">
-				<field name="partner_village"/>
-				<field name="care_setting" />
+				<field name="partner_village" string="Physical Address"/>
+				<field name="care_setting" string="Service Point"/>
 				<field name="provider_name"/>
 			</xpath>
 			<xpath expr="//field[@name='partner_id']" position="after">
 				<field name="partner_uuid" invisible="1"/>
 			</xpath>
 			<xpath expr="//field[@name='payment_term_id']" position="after">
-				<field name="shop_id"/>
+				<field name="shop_id" string="Dispensary"/>
 			</xpath>
-			<xpath expr="//notebook/page[1]/group" position="replace">
+			<!--xpath expr="//notebook/page[1]/group" position="replace">
 				<div class="col-xs-5 pull-right text-right" style="padding-right:0px">
 					<div class="col-xs-6 footer_label" style="min-height: 28px;">
 						<label for="amount_untaxed" />
@@ -55,7 +55,7 @@
 						 <field name="discount"  context="{'readonly_by_pass': True}"
 						 attrs="{'readonly': [('discount_type', '=', 'percentage')]}"
 						  style="width:100% !important"/>
-					</div> <!-- readonly bypass added to save the field even if it is in readonly state -->
+					</div>
 					
 					<div class="col-xs-6 footer_label" style="min-height: 28px;"
 						attrs="{'invisible': ['|', ('discount_type', '=', 'none'),
@@ -113,7 +113,7 @@
 						</div>
 					</group>
                 </div>
-			</xpath>
+			</xpath-->
 			<xpath expr="//field[@name='order_line']/tree/field[@name='qty_delivered']" position="after">
 				<field name="lot_id" domain="[('product_id', '=', product_id)]"/>
 				<field name="expiry_date" readonly="1"/>
@@ -125,19 +125,19 @@
 			<xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position="replace">
 				<field name="product_id" 
 				       context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"/><!--attrs="{'readonly': ['|', ('qty_invoiced', '&gt;', 0), ('procurement_ids', '!=', [])]}"-->
-			</xpath>
+			</xpath> <!--
 			<xpath expr="//field[@name='order_line']/tree/field[@name='qty_delivered']" position="replace">
 			    <field name="qty_delivered" invisible="context.get('hide_sale')"/>
-                                        <!--attrs="{'readonly': [('qty_delivered_updateable', '=', False)]}"/-->
+                                        
             </xpath>
             <xpath expr="//field[@name='order_line']/tree/field[@name='price_unit']" position="replace">
-                <field name="price_unit"/>
-                                        <!--attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}"/-->
+                <field name="price_unit" invisible="1"/>
+                                        
             </xpath>
             <xpath expr="//field[@name='order_line']/tree/field[@name='tax_id']" position="replace">
-                                    <field name="tax_id" widget="many2many_tags" domain="[('type_tax_use','=','sale'),('company_id','=',parent.company_id)]"/>
-                                        <!--attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}"/-->
-            </xpath>
+                                    <field name="tax_id" widget="many2many_tags" domain="[('type_tax_use','=','sale'),('company_id','=',parent.company_id)]" invisible="1"/>
+                                        
+            </xpath> -->
 		</field>
 	</record>
 	
@@ -152,10 +152,10 @@
 		<field name="domain">[('state', 'not in', ('draft', 'sent'))]</field>
 		<field name="help" type="html">
 			<p class="oe_view_nocontent_create">
-				Create a Quotation, the first step of a new sale.
+				Create a Prescription, the first step of a new dispensing.
 			</p>
 			<p>
-				Once the quotation is confirmed, it becomes a sales order.
+				Once the prescription is confirmed, it becomes a dispensing order.
 				You'll be able to invoice it and collect payments.
 				From the <i>Sales Orders</i> menu, you can track delivery
 				orders or services.
@@ -177,7 +177,7 @@ as discount fields are readonly in case of chargable amount is editable-->
         <field name="context">{'hide_sale': True,'readonly_by_pass': True}</field>
         <field name="help" type="html">
           <p class="oe_view_nocontent_create">
-            Create a Quotation, the first step of a new sale.
+            Create a Prescription, the first step of a new sale.
           </p><p>
             Your next actions should flow efficiently: confirm the Quotation
             to a Sale Order, then create the Invoice and collect the Payment.
@@ -199,7 +199,7 @@ as discount fields are readonly in case of chargable amount is editable-->
 		<field name="inherit_id" ref="sale.view_quotation_tree"/>
 		<field name="arch" type="xml">
 			<xpath expr="//field[@name='partner_id']" position="after">
-				<field name="shop_id"/>
+				<field name="shop_id" string="Dispensary"/>
 			</xpath>
 		</field>
 	</record>
@@ -210,14 +210,14 @@ as discount fields are readonly in case of chargable amount is editable-->
 		<field name="inherit_id" ref="sale.view_quotation_tree"/>
 		<field name="arch" type="xml">
 			<xpath expr="//field[@name='partner_id']" position="after">
-				<field name="shop_id"/>
-				<field name="partner_village"/>
+				<field name="shop_id" string="Dispensary"/>
+				<field name="partner_village" invisible="1"/>
 			</xpath>
 			<xpath expr="//field[@name='amount_total']" position="after">
-			    <field name="total_outstanding_balance"/>
+			    <field name="total_outstanding_balance"	 invisible="1"/>
 			    <field name="provider_name"/>
-			    <field name="disc_acc_id"/>
-				<field name="care_setting"/>
+			    <field name="disc_acc_id" invisible="1"/>
+				<field name="care_setting" string="Service Point"/>
 			</xpath>
 		</field>
 	</record>
@@ -237,7 +237,7 @@ as discount fields are readonly in case of chargable amount is editable-->
 		<field name="name">sale.shop</field>
 		<field name="model">sale.shop</field>
 		<field name="arch" type="xml">
-			<form string="Sales Shop">
+			<form string="Dispensary">
 				<label for="name" class="oe_edit_only"/>
 				<h1><field name="name"/></h1>
 
@@ -247,10 +247,10 @@ as discount fields are readonly in case of chargable amount is editable-->
 				<label for="location_id" class="oe_edit_only"/>
 				<h2><field name="location_id" required="1"/></h2>
 
-				<group name="shop">
+				<group name="shop" string="Dispensary">
 					<group>
-						<field name="payment_default_id"/>
-						<field name="pricelist_id" groups="product.group_sale_pricelist"/>
+						<field name="payment_default_id" invisible="1"/>
+						<field name="pricelist_id" groups="product.group_sale_pricelist" invisible="1"/>
 						<!--domain="[('type','=','sale')]" -->
 					</group>
 					<group>
@@ -266,12 +266,12 @@ as discount fields are readonly in case of chargable amount is editable-->
 		<field name="name">sale.shop</field>
 		<field name="model">sale.shop</field>
 		<field name="arch" type="xml">
-			<tree string="Sales Shop">
+			<tree string="Dispensary">
 				<field name="name"/>
 				<field name="warehouse_id"/>
 				<field name="location_id"/>
-				<field name="pricelist_id" groups="product.group_sale_pricelist"/>
-				<field name="project_id" groups="analytic.group_analytic_accounting"/>
+				<field name="pricelist_id" groups="product.group_sale_pricelist" invisible="1"/>
+				<field name="project_id" groups="analytic.group_analytic_accounting" invisible="1"/>
 			</tree>
 		</field>
 	</record>

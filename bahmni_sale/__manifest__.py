@@ -2,13 +2,13 @@
 {
     'name': 'Bahmni Sale',
     'version': '1.0',
-    'summary': 'Custom Sales module to meet bahmni requirement',
+    'summary': 'Custom dispensing module to meet bahmni requirement',
     'sequence': 1,
     'description': """
 Bahmni Sale
 ====================
 """,
-    'category': 'Sales',
+    'category': 'Dispensing',
     'website': '',
     'images': [],
     'depends': ['sale', 'sale_stock','sales_team', 'bahmni_account','point_of_sale','account'],
