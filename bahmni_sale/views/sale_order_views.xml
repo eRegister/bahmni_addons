@@ -142,7 +142,7 @@
 	</record>
 	
 	<record id="sale.action_orders" model="ir.actions.act_window">
-		<field name="name">Sales Orders</field>
+		<field name="name">Dispensing Orders</field>
 		<field name="type">ir.actions.act_window</field>
 		<field name="res_model">sale.order</field>
 		<field name="view_type">form</field>
@@ -157,7 +157,7 @@
 			<p>
 				Once the prescription is confirmed, it becomes a dispensing order.
 				You'll be able to invoice it and collect payments.
-				From the <i>Sales Orders</i> menu, you can track delivery
+				From the <i>Prescription Orders</i> menu, you can track delivery
 				orders or services.
 			</p>
 		</field>
@@ -166,7 +166,7 @@
 <!--inherited this action to add readonly by pass in context, 
 as discount fields are readonly in case of chargable amount is editable-->
 	<record id="sale.action_quotations" model="ir.actions.act_window">
-        <field name="name">Quotations</field>
+        <field name="name">Prescriptions</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">sale.order</field>
         <field name="view_type">form</field>
