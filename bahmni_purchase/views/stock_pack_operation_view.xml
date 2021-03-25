@@ -16,9 +16,9 @@
 			</xpath>
 			<xpath expr="//field[@name='pack_lot_ids']/tree/field[@name='plus_visible']" position="after">
 				<field name="move_id" invisible="1"/>
-				<field name="cost_price" invisible="not context.get('only_create', False)"/>
-				<field name="sale_price" invisible="not context.get('only_create', False)"/>
-				<field name="mrp" invisible="not context.get('only_create', False)"/>
+				<field name="cost_price" invisible="1"/>
+				<field name="sale_price" invisible="1"/>
+				<field name="mrp" invisible="1"/>
 				<field name="expiry_date"/>
 			</xpath>
 			<xpath expr="//field[@name='pack_lot_ids']/tree/field[@name='qty']" position="replace">

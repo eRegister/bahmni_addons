@@ -65,14 +65,14 @@ actual_stock for a product and quants related to it.-->
 		<field name="inherit_id" ref="product.product_template_form_view"/>
 		<field name="arch" type="xml">
 			<xpath expr="//div[@name='standard_price_uom']" position="after">
-				<label for="mrp" groups="base.group_user"/>
+				<!--label for="mrp" groups="base.group_user"/-->
                 <div name="mrp" groups="base.group_user">
-                    <field name="mrp" widget='monetary' options="{'currency_field': 'currency_id'}" class="oe_inline"/>
+                    <field name="mrp" widget='monetary' options="{'currency_field': 'currency_id'}" class="oe_inline" invisible="1"/>
                 </div>
 			</xpath>
 			<xpath expr="//field[@name='categ_id']" position="after">
 				<field name="drug"/>
-				<field name="manufacturer"/>
+				<field name="manufacturer" invisible="1"/>
 				<field name="dhis2_code"/>
 			</xpath>
 		</field>

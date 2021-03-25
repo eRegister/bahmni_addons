@@ -277,7 +277,7 @@ as discount fields are readonly in case of chargable amount is editable-->
 	</record>
 
 	<record id="action_shop_form" model="ir.actions.act_window">
-		<field name="name">Shop</field>
+		<field name="name">Dispensary</field>
 		<field name="type">ir.actions.act_window</field>
 		<field name="res_model">sale.shop</field>
 		<field name="view_type">form</field>

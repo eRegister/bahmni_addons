@@ -17,9 +17,9 @@
                         <field name="ref"/>
                     </group>
                     <group>
-                    	<field name="cost_price"/>
-                    	<field name="sale_price"/>
-                    	<field name="mrp"/>
+                    	<field name="cost_price" invisible="1"/>
+                    	<field name="sale_price" invisible="1"/>
+                    	<field name="mrp" invisible="1"/>
                     </group>
                 </group>
 			</xpath>
