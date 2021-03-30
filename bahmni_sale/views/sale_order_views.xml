@@ -237,7 +237,7 @@ as discount fields are readonly in case of chargable amount is editable-->
 		<field name="name">sale.shop</field>
 		<field name="model">sale.shop</field>
 		<field name="arch" type="xml">
-			<form string="Dispensary">
+			<form string="Phamarcy Locations">
 				<label for="name" class="oe_edit_only"/>
 				<h1><field name="name"/></h1>
 
@@ -247,10 +247,10 @@ as discount fields are readonly in case of chargable amount is editable-->
 				<label for="location_id" class="oe_edit_only"/>
 				<h2><field name="location_id" required="1"/></h2>
 
-				<group name="shop" string="Dispensary">
+				<group name="shop" string="Payment">
 					<group>
-						<field name="payment_default_id" invisible="1"/>
-						<field name="pricelist_id" groups="product.group_sale_pricelist" invisible="1"/>
+						<field name="payment_default_id"/>
+						<field name="pricelist_id" groups="product.group_sale_pricelist" />
 						<!--domain="[('type','=','sale')]" -->
 					</group>
 					<group>
