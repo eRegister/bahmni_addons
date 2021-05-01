@@ -15,7 +15,7 @@
 				<field name="partner_uuid" invisible="1"/>
 			</xpath>
 			<xpath expr="//field[@name='payment_term_id']" position="after">
-				<field name="shop_id" string="Dispensary"/>
+				<field name="shop_id" string="Phamarcy Locations"/>
 			</xpath>
 			<!--xpath expr="//notebook/page[1]/group" position="replace">
 				<div class="col-xs-5 pull-right text-right" style="padding-right:0px">
@@ -199,7 +199,7 @@ as discount fields are readonly in case of chargable amount is editable-->
 		<field name="inherit_id" ref="sale.view_quotation_tree"/>
 		<field name="arch" type="xml">
 			<xpath expr="//field[@name='partner_id']" position="after">
-				<field name="shop_id" string="Dispensary"/>
+				<field name="shop_id" string="Shop"/>
 			</xpath>
 		</field>
 	</record>
